@@ -297,6 +297,12 @@ class Html5DashJS {
   currentTime() {
     // Livestream
     if (this.mediaPlayer_.isDynamic()) {
+      console.log('DIFF DASH TIME\n===============================');
+      console.log(this.startTime());
+      console.log(this.mediaPlayer_.time());
+      console.log(this.mediaPlayer_.time() + this.timeDiffFromStart(this.startTime()));
+      console.log(Date.now());
+      console.log('===============================');
       return this.mediaPlayer_.time() + this.timeDiffFromStart(this.startTime());
     }
 
