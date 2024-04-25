@@ -69809,14 +69809,9 @@ var Html5DashJS = /*#__PURE__*/function () {
 
   _proto.currentTime = function currentTime() {
     // Livestream
-    //if (this.mediaPlayer_.isDynamic()) {
-    console.log('DIFF DASH TIME DIRECT\n===============================');
-    console.log(this.startTime());
-    console.log(this.mediaPlayer_.time());
-    console.log(this.mediaPlayer_.time() + this.timeDiffFromStart(this.startTime()));
-    console.log(Date.now());
-    console.log('==============================='); //  return this.mediaPlayer_.time() + this.timeDiffFromStart(this.startTime());
-    //}
+    if (this.mediaPlayer_.isDynamic()) {
+      return this.mediaPlayer_.time() + this.timeDiffFromStart(this.startTime());
+    }
 
     return this.mediaPlayer_.time();
   };
@@ -69856,7 +69851,7 @@ var Html5DashJS = /*#__PURE__*/function () {
 
     if (this.mediaPlayer_.isDynamic()) {
       var dvrWindowSize = this.mediaPlayer_.getDVRWindowSize();
-      var start = this.timeDiffFromStart(this.startTime());
+      var start = this.timeDiffFromStart(this.startTime() - 30);
       var end = start + dvrWindowSize;
       return videojs.createTimeRange(start, end);
     } // VOD
